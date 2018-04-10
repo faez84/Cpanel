@@ -1,0 +1,84 @@
+{% trans_default_domain "CpanelBundle" %}
+<thead class="font-style">
+<tr>{% if settings["add"] is defined and settings["add"] %}
+        <td>
+            <a href="{{ path('syndex_cpanel_globalroutes',{'section':settings["section"],'oclass':settings["entname"],'action':'nadd'  }) }}"
+               class="show-"
+               style="font-size: 18px; background: #ffffff;
+                     ; border: 1px solid #589fc3; padding: 5px; box-shadow: 0px 5px 15px 0px   #888888; ">{{ 'admin.add'|trans }}</a>
+        </td>
+    {% endif %}
+    <td>
+        <a href="{{ path('syndex_cpanel_globalroutes',{'section':settings["section"],'oclass':settings["entname"],'action':'nexport'  }) }}"
+           class="excelBtn">
+            {{ 'admin.excel'|trans }}
+        </a></td>
+</tr>
+<tr>
+    <form name="input"
+          action="{{ path('syndex_cpanel_globalroutes',{'section':settings["section"],'oclass':settings["entname"],'action':'nlist'  }) }}"
+          method="post">
+        <div class="col-md-12 col-sm-12 col-xs-12 advanced-search">
+            <div>
+                {% for filed in listfileds %}
+                    {% if  filed["search"] %}
+                        {% set translat = settings["entname"]~"."~filed["name"] %}
+
+                        {% if filed["type"] == "boolean" %}
+                            <div class="filterFiled">
+                                <select name="{{ filed["name"] }}" id="{{ filed["name"] }}"
+                                        class="contentFilteredField " placeholder="{{ filed["name"] }}">
+                                    <option value="" disabled
+                                            selected>{{ translat|trans }}</option>
+                                    <option value="1">{{ 'admin.no'|trans }}</option>
+                                    <option value="2">{{ 'admin.yes'|trans }}</option>
+                                </select>
+                            </div>
+                        {% elseif filed["type"] == "date" %}
+                            <div class="filterFiled ">
+                                <select name="opcomap" id="opcomap" class="compaFilteredField">
+                                    <option value=">">></option>
+                                    <option value="<"><</option>
+
+                                    <option value=">=">=></option>
+                                    <option value="=">=</option>
+                                </select>
+                                <input placeholder="{{ translat|trans }}" class=" dateFilteredField"
+                                       type="text" onfocus="(this.type='date')"
+                                       name="{{ filed["name"] }}" id="{{ filed["name"] }}">
+                            </div>
+                        {% else %}
+                            <div class="filterFiled">
+                                <input type="text" id="{{ filed["name"] }}" size="10"
+                                       name="{{ filed["name"] }}"
+                                       placeholder="{{ translat|trans }}"/>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-md-1 col-sm-1">
+                <input type="hidden" id="op"
+                       name="op" value="op"/>
+                <button type="submit" class="btn btn-danger search-btn"
+                        id="searchBtn" data-toggle="modal"><i class="fa fa-search"
+                                                              aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12"> &nbsp;
+        </div>
+        <div class="col-md-12 col-sm-12"> &nbsp;
+            {% if op =="op" %}
+                {{ 'admin.totalresult'|trans }}{{ pagination.getTotalItemCount }}&nbsp;&nbsp;
+                <a
+                        href="{{ path('syndex_cpanel_globalroutes',{'section':settings["section"],'oclass':settings["entname"],'action':'nlist'  }) }}?op=cal"> {{ 'admin.cancelfilter'|trans }}</a>
+            {% endif %}
+        </div>
+
+
+    </div>
+</tr>
+</thead>

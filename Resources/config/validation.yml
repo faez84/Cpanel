@@ -1,0 +1,115 @@
+ 
+
+syndex\BazaarBundle\Entity\Store:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: slug
+
+    properties:
+        name:
+            - NotBlank: {message: store.name.blank,groups: [bazaar_store_admin] }
+            - Length: {min: 2, minMessage: store.name.short ,max: 255,maxMessage: store.name.long,groups: [bazaar_store_admin] }
+
+        address:
+            - Length: {min: 2, minMessage: store.name.short ,max: 255,maxMessage: store.name.long,groups: [bazaar_store_admin] }
+#        slug:
+#            - NotBlank: {message: store.slug.blank,groups: [bazaar_store] }
+#            - Length: {min: 5, minMessage: store.slug.short ,max: 255,maxMessage: store.slug.long,groups: [bazaar_store] }
+
+        description:
+            - NotBlank: {message: store.description.blank,groups: [bazaar_store_admin] }
+            - Length: {min: 3, minMessage: store.description.short ,max: 5000,maxMessage: store.description.long,groups: [bazaar_store_admin] }
+
+        city:
+            - NotBlank: {message: store.city.blank,groups: [bazaar_store_admin] }
+
+        phone:
+            - NotBlank: {message: store.phone.blank,groups: [bazaar_store_admin] }
+            - Regex:
+                pattern: "/^([0-9]{4,14}$)|(\+963[0-9]{4,9}$)/"
+                groups: [bazaar_store_admin]
+                message:  store.phone.number
+
+        phoneAlt:
+#            - NotBlank: {message: store.phone.blank,groups: [bazaar_store] }
+            - Regex:
+                pattern: "/^([0-9]{4,14}$)|(\+963[0-9]{4,9}$)/"
+                groups: [bazaar_store,store_edit]
+                message:  store.mobile.number
+
+
+syndex\BazaarBundle\Entity\Category:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: slug
+
+    properties:
+        name:
+            - NotBlank: {message: store.name.blank,groups: [bazaar_category_admin] }
+            - Length: {min: 1, minMessage: store.name.short ,max: 255,maxMessage: category.name.long,groups: [bazaar_category_admin] }
+
+syndex\AcademicBundle\Entity\ResearchCategory:
+    properties:
+        arabicFullName:
+            - NotBlank: {message: academia.researchcategory._blank,groups: [academia_admin_researchcat] }
+            - Length: {min: 1, minMessage: academia.researchcategory._blank ,max: 255,maxMessage: category.name.long,groups: [academia_admin_researchcat] }
+        englishFullName:
+            - NotBlank: {message: academia.researchcategory._blank,groups: [academia_admin_researchcat] }
+            - Length: {min: 1, minMessage: academia.researchcategory._blank ,max: 255,maxMessage: category.name.long,groups: [academia_admin_researchcat] }
+
+
+syndex\AcademicBundle\Entity\Field:
+    properties:
+        arabicFullName:
+            - NotBlank: {message: academia.field._blank,groups: [academia_admin_field] }
+            - Length: {min: 1, minMessage: academia.field._blank ,max: 255,maxMessage: category.name.long,groups: [academia_admin_field] }
+        englishFullName:
+            - NotBlank: {message: academia.field._blank,groups: [academia_admin_field] }
+            - Length: {min: 1, minMessage: academia.field._blank ,max: 255,maxMessage: category.name.long,groups: [academia_admin_field] }
+
+
+syndex\AcademicBundle\Entity\Publisher:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: arabicFullName
+            errorPath: arabicFullName
+            message: academia.publisher._unique
+            groups: [academia_admin_publisher]
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: englishFullName
+            errorPath: englishFullName
+            message: academia.publisher._unique
+            groups: [academia_admin_publisher]
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: website
+            errorPath: website
+            message: academia.publisher._unique
+            groups: [academia_admin_publisher]
+    properties:
+        arabicFullName:
+            - NotBlank: {message:  academia.publisher._blank,groups: [academia_admin_publisher] }
+            - Length: {min: 1, minMessage: academia.publisher._blank ,max: 255,maxMessage: category.name.long,groups: [academia_admin_publisher] }
+        englishFullName:
+            - NotBlank: {message: academia.publisher._blank,groups: [academia_admin_publisher] }
+            - Length: {min: 1, minMessage: academia.publisher._blank ,max: 255,maxMessage: category.name.long,groups: [academia_admin_publisher] }
+        website:
+            - NotBlank: {message: academia.publisher._blank,groups: [academia_admin_publisher] }
+            - Length: {min: 1, minMessage: academia.publisher._blank ,max: 255,maxMessage: category.name.long,groups: [academia_admin_publisher] }
+            - Regex:
+                pattern: "(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})"
+                groups: [academia_admin_publisher]
+                message:  academia.publisher._website
+        email:
+          - Email:
+              groups: [academia_admin_publisher]
+              message: academia.publisher._email
+        syrianRanking:
+            - Regex:
+                pattern: "/^([0-9])/"
+                groups: [academia_admin_publisher]
+                message:  academia.publisher._syrianRankinge
+
+syndex\AcademicBundle\Entity\PublisherAdditionalInfo:
+        globalRanking:
+            - Regex:
+                pattern: "/^([0-9])/"
+                groups: [academia_admin_publisher_info]
+                message:  academia.publisher._globalRanking

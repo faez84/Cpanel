@@ -1,0 +1,91 @@
+{% trans_default_domain "CpanelBundle" %}
+    <div class="panel-body main-admin-list-left col-lg-5 col-md-5 col-sm-5 small-font-size">
+    <a id="statsangledown" href="#" style="display: none">
+        <i class="fa fa-angle-down fa-2x stats-bts " aria-hidden="true"></i>
+    </a>
+
+
+        {{ 'admin.stats'|trans }}
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+{% set myVal = 0 %}
+<div id="stats-section">
+    {% for param in params %}
+        {% if  param["type"] == "axises" %}
+            {% set myVal = myVal + 1 %}
+            <div>
+                <div id="container{{ myVal }}" class="contr  small-font-size"></div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#container{{ myVal }}').highcharts({
+                            chart: {
+                                type: 'line'
+                            },
+                            credits: {
+                                enabled: false
+                            },
+
+                            tooltip: {
+                                useHTML: true,
+                                crosshairs: true,
+                                shared: true
+                            },
+                            title: {
+                                text: '{{ param["legend"]["title"]|trans }}'
+                            },
+                            xAxis: {
+                                type: 'date',
+                                dateTimeLabelFormats: { // don't display the dummy year
+
+                                }, categories: [{{ param[1]|raw }}]
+                            },
+                            yAxis: {
+                                title: {
+                                    text: '{{ param["legend"]["xtitle"]|trans }}'
+                                }
+                            },
+                            series: [{
+                                name: '{{ param["legend"]["ytitle"]|trans }}',
+                                data: [{{ param[0] }}]
+                            }]
+                        });
+                    });
+                </script>
+            </div>
+        {% elseif  param["type"] == "textstats" %}
+            <div>
+                <table class="table tabletext small-font-size ">
+                    <thead>
+                    <tr class="hpplacesdate">
+                        <td>{{ param["title"]|trans }}
+                        </td>
+                    </tr>
+                    <tr class="hpplacesdate">
+                        <th>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                {% for field in param["fields"] %}
+                                    <div class="col-lg-4 col-md-4 col-sm-4 center-text">{{ field["_name"]|trans }}</div>
+                                {% endfor %}
+                            </div>
+                        </th>
+                    </tr>
+                    </thead>
+                    {% for data in param["data"] %}
+                        <tr>
+                            <td>
+                                {% for field in param["fields"] %}
+                                    {% if  field["type"] == "datetime" %}
+                                        <div class="col-md-4 col-sm-4 center-text">{{ data[field["name"]]|date('Y-m-d') }}</div>
+                                    {% else %}
+                                        <div class="col-md-4 col-sm-4 center-text">{{ data[field["name"]] }}</div>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div> </div>

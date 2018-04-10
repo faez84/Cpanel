@@ -1,0 +1,115 @@
+{% extends 'syndexServicesBundle:Admin:baseadmin.html.twig' %}
+{% trans_default_domain "CpanelBundle" %}
+ {% set tit = settings["entname"]~'.title' %}
+{% block title %}{{ tit|trans }}{% endblock %}
+            {% block superJS %}
+                {{ parent() }}
+                <script src="{{ asset('bundles/cpanel/js/academiaadmin.js') }}"></script>
+            {% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="table-responsive" style="background-color: #f3f3f3">
+        <!-- Default panel contents -->
+        <div>
+        </div>
+
+        <h2>{{ tit|trans }}&nbsp;-&nbsp;{{ 'admin.deleteds'|trans }}</h2>
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success">
+                {{ flashMessage|trans }}
+            </div>
+        {% endfor %}
+        <div class="col-lg-7 col-md-7 col-sm-7">
+            <div id="maintab" class="table-responsive">
+                <!-- Table -->
+                <table class="table table-striped center-text" >
+
+                    <thead class="font-style">
+                    <tr class="place-list-table-titles">
+                        {% for filed in listfileds %}
+                            {# sorting of properties based on query components #}
+                            {% if  filed["deleted"] is defined and  filed["deleted"]%}
+                                {% set translat = settings["entname"]~"."~filed["name"] %}
+                                <th class="center-text">{{ knp_pagination_sortable(pagination, translat|trans, "["~filed['name']~"]") }}</th>
+                            {% endif %}
+                        {% endfor %}
+                        <th>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody class="font-style">
+                    {% for item in pagination %}
+                        <tr {% if loop.index is odd %}class="color"{% endif %} >
+                            {% for filed in listfileds %}
+                                {% if  filed["deleted"] is defined and  filed["deleted"]%}
+                                    {% if  filed["type"] =="date" %}
+                                        <td>
+                                            {{ item[filed["name"]]|date('Y-m-d') }}
+                                        </td>
+                                        {#{% elseif filed["type"] =="entity" %}#}
+                                        {#<td>#}
+                                        {#{{ item[filed["name"]][filed["displayarrt"]] }}#}
+                                        {#</td>#}
+
+                                    {% elseif filed["type"] =="boolean" %}
+                                        <td id="status-p-{{ item["id"] }}" align="center">{% if item[filed["name"]] == "1" %} <a
+                                                    id="statusBtn-{{ item["id"] }}-n"
+                                                    href="#" class="status-action"  _action="{{ routs[filed["name"]] }}">
+                                                <i id="status-{{ item["id"] }}-n" class="fa fa-check fa-2x " aria-hidden="true"></i></a>
+                                            {% else %}
+                                                <a id="statusBtn-{{ item["id"] }}-y" href="#" class="status-action" _action="{{ routs[filed["name"]] }}">
+                                                    <i id="status-{{ item["id"] }}-y" class="fa fa-times fa-2x "
+                                                       aria-hidden="true"></i></a>{% endif %}
+                                            <div class="" id="status-loading-{{ item["id"] }}"></div>
+                                        </td>
+                                    {% else %}
+                                        <td>
+                                            {{ item[filed["name"]] }} </td>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+
+
+                            <td>
+                                <a id="showaddBtn-{{ item["id"] }}" href="#" class="show-action" _d="1"
+                                   _show="syndex_cpanel_globalroutes"
+                                   _object="{{ settings["entname"] }}"
+                                   _section = "{{ settings["section"] }}"
+                                >
+                                    <i class="fa fa-eye fa-lg"> </i>
+                                </a>
+
+                                {% if settings["delete"] %}
+
+                                    <a id="deletet-{{ item.id }}-restore" href="#" class="deletet-action-btn"
+                                       _action="syndex_cpanel_globalroutes"
+                                       _object="{{ settings["entname"] }}"
+                                       _section = "{{ settings["section"] }}"
+                                    >
+                                        <i class="fa fa-trash-o fa-lg"></i>
+                                    </a>
+
+
+                                {% endif %}
+                                <div class=" " id="show-loading-{{ item.id }}"></div>
+                            </td>
+
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="knp-pagination" align="center">
+                {{ knp_pagination_render(pagination, null, {}, {'style': 'pager'}) }}
+            </div>
+        </div>
+
+
+
+        <div id="show-section">
+        </div> {# display navigation #}
+    </div>
+
+{% endblock %}

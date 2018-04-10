@@ -1,0 +1,49 @@
+{% trans_default_domain "CpanelBundle" %}
+{% set titl = entname~'.show' %}
+{% set idd = 'admin.id' %}
+        <div>
+            <div id="maintab" class="table-responsive">
+                <!-- Table -->  <a href="#"> <i class="fa fa-times fa-2x show-close " aria-hidden="true"></i></a>
+                {{ titl|trans }}&nbsp;{{ idd|trans }}&nbsp;{{ id }}
+                <table class="table table-striped center-text">
+                    <thead class="font-style">
+                    <tr class="place-list-table-titles">
+                        {% for filed in listfileds %}
+                            {# sorting of properties based on query components #}
+                                {% set translat = settings["entname"]~"."~filed["name"] %}
+                                <th class="center-text">{{  translat|trans }}</th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody class="font-style">
+                    {% for item in list %}
+                        <tr>
+                            {% for filed in listfileds %}
+                                        <td>
+                                            {{ item[filed["name"]] }}
+                                        </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td>
+                            {% if page > 0 %}
+                             <a id="showaddBtn-{{ id }}-{{ page - step }}-{{ fieldid }}" href="#"
+                                class="sublist-action" _rout="{{ routs["sublist"] }}">
+                                 <i class="fa fa-arrow-right"></i>
+                             </a>
+                            {% endif %}
+                         </td>
+                        <td>
+                            {% if list|length == step %}
+                                <a id="showaddBtn-{{ id }}-{{ page + step }}-{{ fieldid }}" href="#"
+                                   class="sublist-action" _rout="{{ routs["sublist"] }}">
+                                    <i class="fa fa-arrow-left"></i>
+                                </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>

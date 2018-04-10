@@ -1,0 +1,90 @@
+
+syndex_cpanel_globalroutes:
+    path:      /cp/{section}/{oclass}/{action}/{page}
+    defaults:  { _controller: CpanelBundle:NewAdmin:globalRoute, page: 1 }
+    requirements:
+        method: post
+    options:
+          expose: true
+
+syndex_cpanel_academia:
+    resource: "@CpanelBundle/Resources/config/academia_routing.yml"
+    prefix:   /academia
+
+syndex_cpanel_contacus:
+    resource: "@CpanelBundle/Resources/config/contactus_routing.yml"
+    prefix:   /contactus
+
+syndex_cpanel_places:
+    resource: "@CpanelBundle/Resources/config/places_routing.yml"
+    prefix:   /places
+
+syndex_cpanel_bazaar:
+    resource: "@CpanelBundle/Resources/config/bazar_routing.yml"
+    prefix:   /bazar
+
+syndex_cpanel_users:
+    resource: "@CpanelBundle/Resources/config/users_routing.yml"
+    prefix:   /usersc
+
+syndex_cpanel_news:
+    resource: "@CpanelBundle/Resources/config/news_routing.yml"
+    prefix:   /newsadmin
+
+cpanel_homepage:
+    path:     /
+    defaults: { _controller: CpanelBundle:Default:index }
+
+syndex_cpanel_indexchoices_list:
+    pattern:      /indexchoices/list/{page}
+    defaults:  { _controller: CpanelBundle:Default:list, page: 1 }
+    requirements:
+
+        _method: get|post
+
+#syndex_cpanel_indexchoices_add:
+#    path:     /indexchoices/new
+#    defaults: { _controller: CpanelBundle:Default:addIndexChoices }
+#    requirements:
+#        _method:  GET|POST
+
+syndex_cpanel_indexchoices_update:
+    path:     /indexchoices/edit/{id}
+    defaults: { _controller: CpanelBundle:Default:updateIndexChoices }
+    requirements:
+        _method:  GET|POST
+
+syndex_cpanel_indexchoices_remove:
+    path:      /indexchoices/del/{id}
+    defaults:  { _controller: CpanelBundle:Default:removeIndexChoices }
+
+syndex_cpanel_indexchoices_show:
+    path:   /indexchoices/show
+    defaults: { _controller: CpanelBundle:Default:showIndexChoices }
+    requirements: { _method: post }
+    options:
+          expose: true
+
+syndex_news_admin_gettitlecpanel:
+    path:   /gettitle
+    defaults: { _controller: CpanelBundle:Default:getTitle }
+    requirements: { _method: post }
+    options:
+          expose: true
+
+
+syndex_bazar_admin_globstats:
+    path:   /bazarglobstats
+    defaults: { _controller: CpanelBundle:Bazar:globalStats }
+    requirements: { _method: get }
+    options:
+          expose: true
+
+syndex_cpanel_indexchoices_statspsnplexportxsl:
+    path:   /indexchoicesexportxsl
+    defaults: { _controller: CpanelBundle:Default:exportXsl }
+    requirements: { _method: post|get }
+    options:
+          expose: true
+
+

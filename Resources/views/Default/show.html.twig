@@ -1,0 +1,127 @@
+{% trans_default_domain "CpanelBundle" %}
+{% set titl = entname~'.show' %}
+{% set idd = 'admin.id' %}
+<div class="panel-body main-admin-list-left col-lg-5 col-md-5 col-sm-5 ">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <table class="table stats-table" dir="ltr">
+                <thead class="font-style">
+                <tr dir="rtl" style="background-color: #ccc">
+                    <td colspan="2">
+                        <a href="#"> <i class="fa fa-times fa-2x show-close "
+                                        aria-hidden="true"></i></a> {{ titl|trans }}
+                    </td>
+                </tr>
+                </thead>
+                <tbody class="font-style">
+                <tr>
+                    <td>
+                        {% if sublist %}
+                            {% include 'CpanelBundle:'~section~'/'~entname~':subshow.html.twig' %}
+                        {% endif %}
+
+                        {% for filed in listfileds %}
+                            {% if obj[filed["name"]] is defined %}
+                                <div class="col-md-12 col-sm-12 div-show">
+                                    {% set translat = entname~"."~filed["name"] %}
+                                    <div align="right" class="div-show-div"> {{ translat|trans }}</div>
+                                    <div align="right" id="show-firstName">
+                                        {% if  filed["type"] =="date" %}
+                                            {{ obj[filed["name"]]|date('Y-m-d') }}
+                                        {% elseif filed["type"] =="array" %}
+                                            {% for valu in obj[filed["name"]] %}
+                                                {{ valu }}
+                                            {% endfor %}
+                                        {% elseif filed["type"] =="file" %}
+                                            {{ obj[filed["name"]] }}
+                                            <br/>
+                                            <a href="{{ pathToFolder~obj[filed["name"]] }}">{{ 'admin.download'|trans }}</a>
+                                        {% elseif filed["type"] =="boolean" %}
+                                            {% if obj[filed["name"]] == "1" %}
+                                                <i id="status-{{ obj["id"] }}-n" class="fa fa-check fa-2x "
+                                                   aria-hidden="true"></i>
+                                            {% else %}
+                                                <i id="status-{{ obj["id"] }}-y" class="fa fa-times fa-2x "
+                                                   aria-hidden="true"></i>
+                                            {% endif %}
+
+                                           {% else %}
+
+                                            {{ obj[filed["name"]] }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                            {% elseif filed["type"] =="entity" and filed["subtype"] is defined and filed["subtype"] =="one2oneentity"  %}
+                            {% for child in filed["childs"] %}
+                        <div class="col-md-12 col-sm-12 div-show">
+                                {% set translat = entname~"."~child["name"] %}
+                                <div align="right" class="div-show-div"> {{ translat|trans }}</div>
+
+                                <div align="right" id="show-firstName">
+                                    {% if  child["type"] =="date" %}
+                                        {{ obj[child["name"]]|date('Y-m-d') }}
+                                    {% elseif child["type"] =="array" %}
+                                        {% for valu in obj[child["name"]] %}
+                                            {{ valu }}
+                                        {% endfor %}
+                                    {% elseif child["type"] =="file" %}
+
+
+                                        {{ obj[child["name"]] }}
+
+                                    {% elseif child["type"] =="boolean" %}
+                                        {% if obj[child["name"]] == "1" %}
+                                            <i id="status-{{ obj["id"] }}-n" class="fa fa-check fa-2x "
+                                               aria-hidden="true"></i>
+                                        {% else %}
+                                            <i id="status-{{ obj["id"] }}-y" class="fa fa-times fa-2x "
+                                               aria-hidden="true"></i>
+                                        {% endif %}
+
+                                    {% else %}
+
+                                        {{ obj[child["name"]] }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% if inedit %}
+                            <div dir="rtl" id="inedit">
+                                {% for filed in listfileds %}
+                                    {% if filed["inedit"] is defined %}
+                                        {% if filed["inedit"] %}
+                                            {% set translat = entname~"."~filed["name"] %}
+                                            <div class="col-md-12 col-sm-12">{{ translat|trans }}</div>
+                                            <div class="col-md-12 col-sm-12"><textarea class="inedit boxsizingBorder"
+                                                                                       rows="10"
+                                                                                       id="{{ filed["name"] }}"
+                                                                                       name="{{ filed["name"] }}"></textarea>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                                <div class="col-md-12 col-sm-12">
+                                    <input id="statusBtn-{{ obj["id"] }}-y" type="submit"
+                                           value="{{ 'admin.sendd'|trans }}" class="inedit-action btn "
+                                           _action="syndex_cpanel_globalroutes"
+                                           _object="{{ entname }}"
+                                           _section = "{{ section }}"
+                                    />
+                                </div>
+                            </div>
+
+                        {% endif %}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+{% extends 'syndexServicesBundle:Admin:baseadmin.html.twig' %}
+{% trans_default_domain "CpanelBundle" %}
+ {% set tit = entname~'.title' %}
+ {% set showtype = 'admin.'~type %}
+{% block title %}{{ tit|trans }}{% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+
+    {% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <section id="main">
+        <div class="panel-body container-fluid">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="margin-left:10px;margin-right:10px;">
+
+
+                    {% for flashMessage in app.session.flashbag.get('notice') %}
+                        <div class="alert alert-success" role="alert">
+                            <div align="right" style="font-weight: bold;">{{ flashMessage }}</div>
+                        </div>
+                    {% endfor %}
+                    <div class="panel panel-danger" style="padding: 10%; padding-top: 2%;">
+                        <div>
+                            <i class="fa fa-add-o fa-lg"></i>{{ showtype|trans }}-{{ tit|trans }}
+                        </div>
+                        {% if type == "add" %}
+                            {{ form_start(form, {'action':   path('syndex_cpanel_globalroutes',{'section':section,'oclass':entname,'action':'nadd'  }) , 'method': 'POST', 'attr': {'novalidate': 'novalidate'},  enctype:"multipart/form-data" }) }}
+                        {% elseif type == "edit" %}
+                            {% if subedit is defined %}
+                                {% if subedit %}
+                                    {% include 'CpanelBundle:'~section~'/'~entname~':subedit.html.twig' %}
+                                {% endif %}
+                            {% endif %}
+                            {{ form_start(form, {'action': path('syndex_cpanel_globalroutes',{'section':section,'oclass':entname,'action':'nedit' ,  'page':entity.id}), 'method': 'POST', 'attr': {'novalidate': 'novalidate'},  enctype:"multipart/form-data" }) }}
+                            {% for imageField in imageFields %}
+                                <input type="hidden" value="{{ imageField["value"] }}" id="{{ imageField["name"] }}"
+                                       name="{{ imageField["name"] }}"/>
+                            {% endfor %}
+
+                        {% endif %}
+                        {% set childs = form.children %}
+                        {% for filed in listfileds %}
+                            {% if filed["addedit"] is defined and  filed["addedit"] %}
+                                <div class="form-group" style=" padding-top: 10px;">
+
+                                    {{ form_row(childs[filed["name"]] ) }}
+
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        {#<button type="submit" name="submit">submit</button>#}
+                        <input type="submit" value="{{ showtype|trans }}" class="btn"
+                               style="margin-right: 16%;color: white;background-color: #00a550;"/>
+                        <a class="btn btn-primary"
+                           href="{{ path('syndex_cpanel_globalroutes',{'section':section,'oclass':entname,'action':'nlist'  }) }}?op=cal"
+                           role="button">{{ 'admin.cancel'|trans }}</a>
+
+                        {{ form_end(form) }}
+                    </div>
+                    <br>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(function () {
+            $('.adv-select').select2();
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,134 @@
+parameters:
+    academia_dir: '%kernel.root_dir%/../web/uploads/publishers/'
+
+services:
+#    cpanel.example:
+#        class: CpanelBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    syndex.cpanelindexchoices.form.add:
+        class: syndex\CpanelBundle\Form\IndexChoicesType
+        tags:
+            - { name: form.type, alias: index_choices }
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+
+    syndex.cpanel_bazar_product.form.add:
+        class: syndex\CpanelBundle\Form\Bazar\ProductType
+        tags:
+            - { name: form.type, alias: cpanel_bazaar_product_type }
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+
+    syndex.cpanel_bazar_product.form.update:
+        class: syndex\CpanelBundle\Form\Bazar\ProductEditType
+        tags:
+            - { name: form.type, alias: cpanel_bazaar_product_update }
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+
+    syndex.cpanel_bazar_attribute.form.add:
+        class: syndex\CpanelBundle\Form\Bazar\AttributesType
+        tags:
+            - { name: form.type, alias: cpanel_bazaar_attribute_type }
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+
+    syndex.cpanelbazar.store.form.add:
+        class: syndex\CpanelBundle\Form\Bazar\StoreType
+        tags:
+            - { name: form.type, alias: cpanel_bazaar_store_type }
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+
+    syndex.cpanelbazar.category.form.add:
+        class: syndex\CpanelBundle\Form\Bazar\CategoryType
+        tags:
+            - { name: form.type, alias: cpanel_bazaar_category_type }
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+
+    syndex.cpanelbazar.review.form.add:
+        class: syndex\CpanelBundle\Form\Bazar\ReviewType
+        tags:
+            - { name: form.type, alias: cpanel_bazaar_review_type }
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+
+    syndex.cpanelbazar.up.form.add:
+        class: syndex\CpanelBundle\Form\Bazar\UserPreferencesType
+        tags:
+            - { name: form.type, alias: cpanel_bazaar_up_type }
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+
+    syndex.cpanelbazar.pup:
+        class: syndex\CpanelBundle\Services\PubService
+        arguments: ['@phpexcel', '%academia_dir%']
+
+    syndex.cpanelplaces.service:
+        class: syndex\CpanelBundle\Services\CpanelPlacesService
+        arguments: ["@templating",'@doctrine.orm.entity_manager','@shamra.comment_manager']
+
+    syndex.cpanelstats.service:
+        class: syndex\CpanelBundle\Services\StatsService
+        arguments: ['@doctrine.orm.entity_manager']
+
+    syndex.cpanelacademia.researchcat.form.add:
+        class: syndex\CpanelBundle\Form\Academia\ResearchCategoryType
+        tags:
+            - { name: form.type, alias: cpanel_academia_reserachcat_type }
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+
+    syndex.cpanelacademia.field.form.add:
+        class: syndex\CpanelBundle\Form\Academia\FieldType
+        tags:
+            - { name: form.type, alias: cpanel_academia_field_type }
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+
+    syndex.cpanelacademia.publisher.form.add:
+        class: syndex\CpanelBundle\Form\Academia\PublisherType
+        tags:
+            - { name: form.type, alias: cpanel_academia_publisher_type }
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+
+    syndex.cpanel.cachedata:
+        class: syndex\CpanelBundle\Services\CacheService
+        arguments: ['@redis_cache']
+
+    syndex.cpanel.researchcategory:
+        class: syndex\CpanelBundle\Util\Academia\ResearchCategoryQuery
+
+    syndex.cpanel.research:
+        class: syndex\CpanelBundle\Util\Academia\ResearchQuery
+
+    syndex.cpanel.field:
+        class: syndex\CpanelBundle\Util\Academia\FieldQuery
+
+    syndex.cpanel.publisher:
+        class: syndex\CpanelBundle\Util\Academia\PublisherQuery
+
+    syndex.cpanel.contributer:
+        class: syndex\CpanelBundle\Util\Academia\ContributerQuery
+
+    syndex.cpanel.tag:
+        class: syndex\CpanelBundle\Util\Academia\TagQuery
+
+    syndex.cpanel.followerstags:
+        class: syndex\CpanelBundle\Util\Academia\FollowersTagsQuery
+
+    syndex.cpanel.contactus:
+        class: syndex\CpanelBundle\Util\ContactUs\EnquiryQuery
+        arguments: [@mailer]
+
+    syndex.cpanel.modelcreater:
+        class: syndex\CpanelBundle\Util\ModelCreater
+    app.image_type_extension:
+        class: syndex\CpanelBundle\Form\Extension\ImageTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FileType }
+    syndex.cpanel.file:
+        class: syndex\CpanelBundle\Services\FileService
+        arguments: ['%academia_dir%']

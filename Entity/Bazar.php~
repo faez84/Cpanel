@@ -1,0 +1,16 @@
+<?php
+
+namespace syndex\CpanelBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+
+/**
+ * SiteAdvertise
+ *
+ * @ORM\Entity(repositoryClass="BazarRepository")
+ */
+class Bazar {
+
+    
+}

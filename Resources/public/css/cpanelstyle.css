@@ -1,0 +1,361 @@
+
+/*////////////////////// news nav ///////////*/
+@media screen and (max-width: 767px) {
+
+    .main-admin-list-right{
+        float:right;
+        width: 100%
+
+    }
+
+
+}
+@media screen and (max-width: 500px) {
+    .td-style{
+        display: none
+    }
+
+    .main-admin-td{
+        width:20%
+    }
+    .non-responsive-y{
+        overflow-x: visible;
+    }
+    .non-responsive-x{
+        width: 70%;
+        max-width: 70%;
+    }
+
+
+}
+@media screen and (min-width: 768px) {
+    .main-admin-list-right{
+        float:right;
+        width: 60%
+
+    }
+
+    .main-admin-title-td{
+        width:25%
+    }
+
+}
+.table-responsive{
+    padding-bottom: 10px; border: 1px solid #f3f3f3;
+}
+
+.center-text{
+    text-align:center
+}
+.excelBtn{
+    font-size: 18px; background: #ffffff;
+; border: 1px solid #589fc3; padding: 5px; box-shadow: 0px 5px 15px 0px   #888888;
+}
+.advanced-search{
+    border:1px solid #f3f3f3; margin: 10px; padding: 10px;
+}
+.knp-pagination{
+    clear: both ; margin-bottom: 80px
+}
+.stats-table{
+    font-size:10px;margin-bottom: 50px; border: 1px solid #CCCCCC;
+}
+.contr{
+    height: 200px;margin-left: 30px;
+}
+.stat-table2{
+    margin-bottom: 50px; border: 1px solid #CCCCCC; height: 100px;
+    font-size: 12px;
+}
+
+.form-control {
+    width: 100%;
+}
+
+
+
+.div-show {
+    margin-top: 10px;
+}
+.div-show-div {
+    font-weight: bold;
+}
+.form-input{
+    float: right;
+    margin: 5px;
+    width: 25%;
+
+}
+.standarddiv{
+    width:100%;  float: right;
+}
+.menu_item
+{
+    background-color: #f3f3f3;
+    border: 1px solid #cccccc;
+    padding: 5px;
+
+}
+.profile-places-box{
+    background-color: #fff;
+    box-shadow: 0px 5px 15px 0px   #888888;
+}
+.place-types{
+    color:orange;
+}
+.place-profile-status{
+    padding: 15px;
+}
+.place-comment-profile-title{
+    width: 100%;
+    float: right;
+    background-color: #f3f3f3;
+}
+.place-comment-profile-text{
+
+
+    float: right;
+}
+.place-comment-profile-date{
+
+    float: right;
+}
+.place-comment-profile{
+    border: 1px solid #ccc;
+    margin: 10px;
+    border-radius: 5%;
+}
+.prev-next-btn{
+    width:25%; float: right
+}
+.custom-msg-alert{
+    width:80%
+}
+.place-verified{
+    color:red;font-weight: bold; padding-right: 120px; padding-left: 20px;
+}
+.places-owner-req{
+    background-color: #f3f3f3; border:#f00 1px solid
+}
+.place-map{
+    width: 100%; height: 250px
+}
+.place-profile-info-piece{
+    clear:both;
+}
+.place-list-table-titles{
+    background-color: #ccc
+}
+.place-show-mai-info{
+    font-size:10px
+}
+.hppalces{
+    background-color: #f7d2e1;
+}
+.pohpdiv{
+    border: 1px solid #cccccc;
+    padding: 15px;
+}
+.hpphiddenbox{
+    display: none;
+}
+.hppshowbox{
+
+    display: block;
+}
+.add-hpplace{
+    margin-top: 10px;
+}
+.admin-bar-style{
+    background-color:#ffa033;
+    border-color: #fff;
+
+}
+#sddm
+{
+    margin: 0;
+    padding: 0;
+    z-index: 30}
+
+#sddm li
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+    font: bold 11px arial}
+
+#sddm li a
+{	display: block;
+    margin: 0 1px 0 0;
+    padding: 4px 10px;
+    width: 120px;
+    background: #fff;
+    color: #FFF;
+    text-align: center;
+    text-decoration: none; z-index: 30
+}
+
+#sddm li a:hover
+{	background: #ff0600}
+
+#sddm div
+{
+    width: 120px; position: absolute;
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    border: 1px solid #f3f3f3}
+
+#sddm div a
+{	position: relative;
+    display: block;
+    margin: 0;
+    padding: 5px 10px;
+    width: auto;
+    white-space: nowrap;
+    text-align: left;
+    text-decoration: none;
+    background-color: #EAEBD8;
+    color: #fff;
+    font: 11px arial}
+
+#sddm div a:hover
+{
+    background-color: #49A3FF;
+    color: #ff0600}
+.font-style{
+    font-size:14px;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+}
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    color: #fff;
+    background-color: #ffc380;
+
+}
+.dropdown-menu>li>a {
+
+    color: #fff;
+    background-color: #ffc380;
+    border: 1px solid #ffa033;
+}
+.dropdown-menu{
+    background-color: #ffa033;
+}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #ffa033;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #ffffff;
+}
+.withmargin{
+    margin-top: 10px;
+}
+.hpplacesdate
+{
+    background-color: #f3f3f3;
+    border: 1px solid #cccccc;
+    padding: 5px;
+
+}
+.update-hpplace{
+    margin-top: 10px;
+}
+.tabletext {
+    font-size: 14px;
+}
+.small-font-size{
+    font-size: 12px;
+}
+.main-admin-list-left{
+    box-shadow: 0px 5px 15px 0px   #888888;
+}
+.boxsizingBorder {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 20px;
+}
+.notseen{
+    background-color: #2aabd2;
+    font-weight: bold;
+}
+.filterFiled{
+    border-radius: 10px;
+    float: right;
+    margin: 10px;
+    width: 22%;
+}
+.dateFilteredField{
+    width: 70%;
+    float: right;
+    margin: 2px;
+}
+.compaFilteredField{
+    width: 27%;
+    float: right;
+}
+.contentFilteredField{
+    width: 100%;
+}
+.search-btn{
+    margin-top: 10px;
+}
+.cover-image-container{
+    min-height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    position: relative;
+    background-origin: content-box;
+    background-size: cover;
+    border: 1px #00a44c solid;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-bottom: 50px;
+}
+.university-logo-container{
+    position: absolute;
+    bottom: -40px;
+    right: 40px;
+    width: 160px;
+    height: 160px;
+    background-color: #ffffff;
+    border: 1px #00a44c solid;
+    border-radius: 4px;
+    padding: 5px;
+}
+.university-logo{
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-origin: content-box;
+    background-size: 100%;
+}
+.deleteimgbar{
+    background-color: #f3f3f3;
+    border:  1px solid #ccc;
+    margin: 2px;
+    opacity: 0.9;
+
+}
+.main-admin-list-left2{
+    box-shadow: 0px 5px 15px 0px   #888888;
+    width: 40%;
+    float: left;
+    display: none;
+}
+.main-admin-list-leftsatas{
+    box-shadow: 0px 5px 15px 0px   #888888;
+    width: 40%;
+    float: left;
+}

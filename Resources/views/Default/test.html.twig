@@ -1,0 +1,18 @@
+{% extends 'syndexServicesBundle:Admin:baseadmin.html.twig' %}
+{% trans_default_domain "CpanelBundle" %}
+ {% set tit = settings["entname"]~'.title' %}
+{% block title %}{{ tit|trans }}{% endblock %}
+            {% block superJS %}
+                {{ parent() }}
+                <script src="{{ asset('bundles/cpanel/js/academiaadmin.js') }}"></script>
+            {% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="table-responsive">
+        <!-- Default panel contents -->
+        <div>success
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+
+admin:
+    title: Shmar-news
+
+    indexchoicetype: Type
+    indexchoicereference:  Reference
+    indexchoicestatus: Status
+    url: URL
+    category: Category
+    image: Image
+    send: إضافة
+    type: 'النمط'

@@ -1,0 +1,177 @@
+admin:
+    totalresult:  عدد النتائج الكلية:
+    cancelfilter: إلغاء الفلترة
+    excel: إكسل
+    statistics: الاحصاءات
+    indexchoicetitle: الأخبار المنتقاة
+    indexchoicetype: النوع
+    indexchoicereference:  الخبر
+    indexchoicestatus: الحالة
+    url: الرابط
+    category: الصنف
+    image: الصورة
+    send: إضافة
+    status: الحالة
+    rank: الترتيب
+    createtime: تاريخ الانشاء
+    updatetime: تاريخ التعديل
+    type: النوع
+    indexchoiceshow:  معلومات الخبر المنتقى رقم
+    newsarticleshow: تفاصيل الخبر
+    newsarticleupdate: تعديل خبر منتقى
+    indexchoiceshow: عرض خبر منتقى رقم:
+    indexchoiceupdate: تعديل معلومات الخبر
+    indexchoicedd: إضافة خبر منتقى
+    cancel: إلغاء
+    update: تعديل
+    bazarglobstats: احصاءات البازار
+    gender: الجنس
+    city: المدينة
+    date: التاريخ
+    more: المزيد
+    body: الوصف
+    add: إضافة
+    edit: تعديل
+    deleteds: محذوفات
+    download: تحميل
+    stats: الاحصاءات
+    id: رقم
+    _blank: الرجاء عدم ترك الحقل فارغا
+    sendd: أرسل
+    no: لا
+    yes: نعم
+publisher:
+    title: الناشرون
+    id: ID
+    arabicFullName: الاسم
+    englishFullName: اسم باللغة الانكليزية
+    slug: Slug
+    website: الموقع الالكتروني
+    category: الفئة
+    createdAt: تاريخ الاضافة
+    lastUpdatedAt: تاريخ آخر تعديل
+    createdBy: تمت الاضافة بواسطة
+    lastUpdatedBy: تم التعديل بواسطة
+    show:  الناشر
+    _blank: الرجاء عدم ترك الحقل فارغا
+    _unique: القمية المدخلة موجودة مسبقا
+    place: المكان
+    city: المدينة
+    description: الوصف
+    phone: التلفون
+    fax: الفاكس
+    email: الايميل الالكتروني
+    syrianRanking: التصنيف السوري
+    numberOfStudents: عدد الطلاب
+    globalRanking: التصنيف العالمي
+    establishDate: تاريخ التأسيس
+    isPrivate: النوع (خاصة؟)
+    logo: الشعار
+    coverImage: صورة الغلاف
+
+contributer:
+    title: المؤلفون
+    id: ID
+    fullName: الاسم
+    shamraUser: المستخدم
+    slug: Slug
+    email: الايميل
+
+    createdAt: تاريخ الاضافة
+    lastUpdatedAt: تاريخ آخر تعديل
+    createdBy: تمت الاضافة بواسطة
+    lastUpdatedBy: تم التعديل بواسطة
+    researches: الأبحاث
+    show: المؤلف
+    _statstitle: المؤلفون الأكثر مشاهدة
+
+researchcategory:
+    title: أنواع الأبحاث
+    id: ID
+    arabicFullName: الاسم
+    englishFullName: اسم باللغة الانكليزية
+
+
+    createdAt: تاريخ الاضافة
+    lastUpdatedAt: تاريخ آخر تعديل
+    createdBy: تمت الاضافة بواسطة
+    lastUpdatedBy: تم التعديل بواسطة
+    researches: الأبحاث
+    show:  النوع
+    _blank: الرجاء عدم ترك الحقل فارغا
+tag:
+    title: الكلمات المفتاحية
+    id: ID
+    context: الاسم
+
+    createdAt: تاريخ الاضافة
+    lastUpdatedAt: تاريخ آخر تعديل
+    createdBy: تمت الاضافة بواسطة
+    lastUpdatedBy: تم التعديل بواسطة
+    researches: الأبحاث
+    show: عرض معلومات الكلمة المفتاحية
+
+research:
+    title: الأبحاث
+    id: ID
+    arabicFullTitle: العنوان
+    englishFullTitle: الاسم باللغة الانكليزية
+    arabicAbstract: الملخص العربي
+    englishAbstract: الملخص الانكليزي
+    publisher: الناشر
+    textualPublisher: جهة ناشرة أخرى
+    publicationDate: تاريخ النشر
+    researchCategory: نوع البحث
+    document: الملف
+    tags: الكلمات المفتاحية
+    researchContributersRoles: المؤلفون
+    indexed: مفهرس
+    approved: مقبول
+    hits: المشاهدات
+    researchReferences: المراجع
+
+    createdAt: تاريخ الاضافة
+    lastUpdatedAt: تاريخ آخر تعديل
+    createdBy: تمت الاضافة بواسطة
+    lastUpdatedBy: تم التعديل بواسطة
+    researches: الأبحاث
+    _statstitle1: الابحاث حسب التاريخ
+    fields: مجالات البحث
+    count: العدد
+    _statstitle2: حسب مجال البحث
+    _statstitle3: الأبحاث حسب الناشرون
+    _statstitle4: الأبحاث حسب النوع
+    _statstitle5: الأبحاث الأكثر مشاهدة
+    _statstitle6: الأبحاث المضافة حديثا
+    show:  البحث
+
+
+field:
+    title: مجالات الأبحاث
+    id: ID
+    arabicFullName: الاسم
+    englishFullName: الاسم باللغة الانكليزية
+    children: الأبناء
+    parent: المجال الأب
+    slug: Slug
+
+    createdAt: تاريخ الاضافة
+    lastUpdatedAt: تاريخ آخر تعديل
+    createdBy: تمت الاضافة بواسطة
+    lastUpdatedBy: تم التعديل بواسطة
+    researches: الأبحاث
+    show:  المجال
+    _blank: الرجاء عدم ترك الحقل فارغا
+followerstags:
+    id: ID
+    tag: الكلمة المفتاحية
+    follower: المستخدم
+    followedAt: تاريخ المتابعة
+    cancelledAt: تاريخ الالغاء
+    title: متابعة الكلمات المفتاحية
+    _statstitle: أكثر الكلمات المفتاحية متابعة
+    followers: المتابعون
+
+
+
+
