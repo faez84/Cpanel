@@ -1,3 +1,3 @@
 # Cpanel
 About:
-Source code of Controll Panel
+Source code of Control Panel
