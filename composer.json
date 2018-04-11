@@ -1,0 +1,30 @@
+{
+    "name" : "faez84/cpanel",
+    "description" : "Cpanel bundle",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "faez",
+        "email" : "faez@gmail.com"
+    }],
+    "keywords" : [
+        "control panel"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+    },
+    "autoload" : {
+        "psr-0" : {
+            "faez84\\cpanel" : ""
+        }
+    },
+    "target-dir" : "faez84/cpanel",
+    "repositories" : [{
+    }],
+    "extra" : {
+    "branch-alias" : {
+            "dev-master" : "1.0-dev"
+        }
+    }
+}
